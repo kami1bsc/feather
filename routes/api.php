@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\AddressBookController;
+use App\Http\Controllers\Api\ApplicationUtilitySeedController;
+use App\Http\Controllers\Api\MainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,4 +42,25 @@ Route::post('add_address', [AddressBookController::class, 'add_address']);
 Route::post('edit_address', [AddressBookController::class, 'edit_address']);
 Route::get('get_addresses/{user_id}', [AddressBookController::class, 'get_addresses']);
 Route::get('delete_address/{address_id}', [AddressBookController::class, 'delete_address']);
+
+//Homescreen Routes
+Route::get('home_screen/{user_id}', [MainController::class, 'home_screen']);
+
+//Categories 
+Route::get('categories', [MainController::class, 'categories']);
+
+//Breed
+Route::get('breeds/{user_id}', [MainController::class, 'breeds']);
+
+//Favourite
+Route::post('set_favourite_bird', [MainController::class, 'set_favourite_bird']);
+
+
+
+
+
+
+
+//Application Routes
+Route::get('bird_image_seeder', [ApplicationUtilitySeedController::class, 'bird_image_seeder']);
 

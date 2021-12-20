@@ -15,63 +15,44 @@ class CategorySeeder extends Seeder
     public function run()
     {
         Category::create([
-            'category_name' => 'Chicken',
-            'category_image' => 'categories/chicken.jpg',
+            'category_name' => 'Australorp',
+            'category_image' => 'categories/australorps.jpg',
         ]);
 
         Category::create([
-            'category_name' => 'Parakeets',
-            'category_image' => 'categories/parakeets.jpg',
+            'category_name' => 'Barnvelder',
+            'category_image' => 'categories/barnevelder.jpg',
         ]);
 
         Category::create([
-            'category_name' => 'Cockatiels',
-            'category_image' => 'categories/cockatiel.jpg',
+            'category_name' => 'Bielefelder',
+            'category_image' => 'categories/bielefelder.jpg',
         ]);        
 
         Category::create([
-            'category_name' => 'Cockatoo',
-            'category_image' => 'categories/cockatoo.jpg',
+            'category_name' => 'Red Star',
+            'category_image' => 'categories/breed-star-red.jpg',
         ]); 
         
-        // Category::create([
-        //     'category_name' => 'Canaries',
-        //     'category_image' => 'categories/canary.jpg',
-        // ]); 
+        Category::create([
+            'category_name' => 'Brahma',
+            'category_image' => 'categories/breed-brahma.jpg',
+        ]); 
 
-        // Category::create([
-        //     'category_name' => 'Finches',
-        //     'category_image' => 'categories/finch.jpg',
-        // ]); 
+        Category::create([
+            'category_name' => 'Chantecler',
+            'category_image' => 'categories/breed-chantecler.jpg',
+        ]); 
 
-        // Category::create([
-        //     'category_name' => 'Lovebirds',
-        //     'category_image' => 'categories/locebird.jpg',
-        // ]); 
+        Category::create([
+            'category_name' => 'Delaware',
+            'category_image' => 'categories/breed-delaware.jpg',
+        ]); 
 
-        // Category::create([
-        //     'category_name' => 'Doves',
-        //     'category_image' => 'categories/doves.jpg',
-        // ]); 
+        Category::create([
+            'category_name' => 'Maran',
+            'category_image' => 'categories/breed-maran.jpg',
+        ]); 
 
-        // Category::create([
-        //     'category_name' => 'Toucans',
-        //     'category_image' => 'categories/toucan.jpg',
-        // ]);
-        
-        // Category::create([
-        //     'category_name' => 'Poicephalus Parrots',
-        //     'category_image' => 'categories/poicephalus-parrot.jpg',
-        // ]);
-
-        // Category::create([
-        //     'category_name' => 'Pionus Parrots',
-        //     'category_image' => 'categories/pionus-parrot.jpg',
-        // ]);
-
-        // Category::create([
-        //     'category_name' => 'Amazon Parrots',
-        //     'category_image' => 'categories/Amazon-parrots.jpg',
-        // ]);
     }
 }

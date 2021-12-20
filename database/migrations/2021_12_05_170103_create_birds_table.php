@@ -54,7 +54,7 @@ class CreateBirdsTable extends Migration
             $table->string('delivery_address')->default("");
             $table->string('delivery_type')->default("home_delivery");
             $table->string('delivery_days')->default("");
-            $table->integer("delivery_charges")->default(0);
+            $table->string("delivery_charges")->default("");
             $table->string('delivery_charges_currency')->default("$");
             $table->timestamps();
         });
