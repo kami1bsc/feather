@@ -9,6 +9,9 @@ use App\Models\BirdImage;
 use App\Models\BirdInventory;
 use App\Models\BirdInventoryData;
 use Carbon\Carbon;
+use App\Models\Rating;
+use App\Models\User;
+use App\Models\Follow;
 
 class ApplicationUtilitySeedController extends Controller
 {
@@ -38,7 +41,21 @@ class ApplicationUtilitySeedController extends Controller
                 $image3 = new BirdImage;
                 $image3->bird_id = $bird->id;
                 $image3->bird_image = 'bird_images/default3.jpg';
-                $image3->save();                
+                $image3->save();   
+                
+                $rating = new Rating;
+                $rating->user_id = 8;
+                $rating->bird_id = $bird->id;
+                $rating->rating_stars = 5.0;
+                $rating->review = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+                $rating->save();
+
+                $rating = new Rating;
+                $rating->user_id = 9;
+                $rating->bird_id = $bird->id;
+                $rating->rating_stars = 5.0;
+                $rating->review = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+                $rating->save();
             }
         }
 
@@ -126,6 +143,20 @@ class ApplicationUtilitySeedController extends Controller
                     $data->inventory_data = '20 Available';
                     $data->save();
                 }
+            }
+        }
+
+        $customers = User::where('type', '1')->get('id');
+        $stores = User::where('type', '2')->get('id');
+
+        foreach($customers as $customer)
+        {
+            foreach($stores as $store)
+            {
+                $follow = new Follow;
+                $follow->follower_id = $customer->id;
+                $follow->following_id = $store->id;
+                $follow->save();
             }
         }
 

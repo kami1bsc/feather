@@ -11,6 +11,7 @@ use App\Models\BirdInventory;
 use App\Models\BirdInventoryData;
 use App\Models\Category;
 use App\Models\Banner;
+use App\Models\Favourite;
 
 class MainController extends Controller
 {
@@ -189,6 +190,69 @@ class MainController extends Controller
                     'message' => 'Set Favourite',
                 ], 200);
             }
+        }catch(\Exception $e)
+        {
+            return response()->json([
+                'status' => false,
+                'message' => 'There is some trouble to proceed your action',
+            ], 200);
+        }
+    }
+
+    public function birds_by_category($user_id, $category_id)
+    {
+        try{
+            $category = Category::where('id', $category_id)->first('id');
+
+            if(empty($category))
+            {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Category does not Exists',
+                ], 200);
+            }
+
+            $user = User::where('id', $user_id)->first('id');
+
+            if(empty($user))
+            {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'User does not Exists',
+                ], 200);
+            }
+
+            $birds = Bird::where('category_id', $category_id)->orderBy('id', 'asc')->take(15)->get(['id', 'bird_name', 'bird_price', 'bird_price_currency', 'average_rating']);
+
+            if(!empty($birds))
+            {
+                foreach($birds as $bird)
+                {
+                    $fav = Favourite::where('bird_id', $bird->id)
+                    ->where('user_id', $user_id)
+                    ->first();
+
+                    if(!empty($fav))
+                    {
+                        $bird->is_favourite = true;
+                    }else{
+                        $bird->is_favourite = false;
+                    }
+
+                    $bird_image = BirdImage::where('bird_id', $bird->id)->first('bird_image');
+                
+                    if(!empty($bird_image))
+                    {
+                        $bird->bird_image = IMAGE_URL.$bird_image->bird_image;
+                    }
+                }
+            }
+
+            return response()->json([
+                'status' => true,
+                'message' => $birds->count() > 0 ? 'Birds Found' : 'No Bird Found',
+                'data' => $birds->count() > 0 ? $birds : [],
+            ], 200);
         }catch(\Exception $e)
         {
             return response()->json([

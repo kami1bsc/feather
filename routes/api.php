@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\AddressBookController;
 use App\Http\Controllers\Api\ApplicationUtilitySeedController;
 use App\Http\Controllers\Api\MainController;
+use App\Http\Controllers\Api\BirdController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,7 @@ Route::get('home_screen/{user_id}', [MainController::class, 'home_screen']);
 
 //Categories 
 Route::get('categories', [MainController::class, 'categories']);
+Route::get('birds_by_category/{user_id}/{category_id}', [MainController::class, 'birds_by_category']);
 
 //Breed
 Route::get('breeds/{user_id}', [MainController::class, 'breeds']);
@@ -55,11 +57,8 @@ Route::get('breeds/{user_id}', [MainController::class, 'breeds']);
 //Favourite
 Route::post('set_favourite_bird', [MainController::class, 'set_favourite_bird']);
 
-
-
-
-
-
+//Bird Routes
+Route::get('bird_details/{user_id}/{bird_id}', [BirdController::class, 'bird_details']);
 
 //Application Routes
 Route::get('bird_image_seeder', [ApplicationUtilitySeedController::class, 'bird_image_seeder']);

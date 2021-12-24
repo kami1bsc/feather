@@ -21,6 +21,7 @@ class CreateRatingsTable extends Migration
             $table->foreign('bird_id')->references('id')->on('birds')->onDelete('cascade');
             $table->string('rating_stars')->default('5.0');
             $table->text('review')->nullable();
+            $table->string('review_time')->default(time());
             $table->timestamps();
         });
     }

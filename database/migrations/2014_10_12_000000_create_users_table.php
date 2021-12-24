@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('phone', 30)->default("");
             $table->string('profile_image')->default("profile_images/default.png");
             $table->string('store_name', 100)->default("");
+            $table->string('store_rating', 10)->default("5.0");
             $table->integer('is_business_verified')->default(0); //0 for false 1 for true and is just for business           
             $table->integer('wallet_balance')->default(0);
             $table->string('wallet_balance_currency', 10)->default('$');

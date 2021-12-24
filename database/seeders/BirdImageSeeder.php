@@ -13,6 +13,9 @@ class BirdImageSeeder extends Seeder
      */
     public function run()
     {
-        
+        // BirdImage::create([
+        //     'bird_id' => ,
+        //     'bird_image' => 
+        // ]);         
     }
 }
