@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\AddressBookController;
 use App\Http\Controllers\Api\ApplicationUtilitySeedController;
 use App\Http\Controllers\Api\MainController;
 use App\Http\Controllers\Api\BirdController;
+use App\Http\Controllers\Api\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,4 +63,10 @@ Route::get('bird_details/{user_id}/{bird_id}', [BirdController::class, 'bird_det
 
 //Application Routes
 Route::get('bird_image_seeder', [ApplicationUtilitySeedController::class, 'bird_image_seeder']);
+
+//Profile
+Route::get('store_profile/{user_id}/{store_id}', [ProfileController::class, 'store_profile']);
+
+//Follow
+Route::get('follow/{follower_id}/{following_id}', [MainController::class, 'follow']);
 

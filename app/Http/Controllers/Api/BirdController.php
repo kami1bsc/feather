@@ -18,7 +18,7 @@ class BirdController extends Controller
 {
     public function bird_details($user_id, $bird_id)
     {        
-        // try{
+        try{
             $user = User::where('id', $user_id)->first('id');
 
             if(empty($user))
@@ -118,12 +118,12 @@ class BirdController extends Controller
                 'message' => 'Bird Details Found',
                 'data' => $bird,
             ], 200);
-        // }catch(\Exception $e)
-        // {
-        //     return response()->json([
-        //         'status' => false,
-        //         'message' => 'There is some trouble to proceed your action',
-        //     ], 200);
-        // }
+        }catch(\Exception $e)
+        {
+            return response()->json([
+                'status' => false,
+                'message' => 'There is some trouble to proceed your action',
+            ], 200);
+        }
     }
 }

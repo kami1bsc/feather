@@ -12,6 +12,7 @@ use App\Models\BirdInventoryData;
 use App\Models\Category;
 use App\Models\Banner;
 use App\Models\Favourite;
+use App\Models\Follow;
 
 class MainController extends Controller
 {
@@ -253,6 +254,60 @@ class MainController extends Controller
                 'message' => $birds->count() > 0 ? 'Birds Found' : 'No Bird Found',
                 'data' => $birds->count() > 0 ? $birds : [],
             ], 200);
+        }catch(\Exception $e)
+        {
+            return response()->json([
+                'status' => false,
+                'message' => 'There is some trouble to proceed your action',
+            ], 200);
+        }
+    }
+
+    public function follow($follower_id, $following_id)
+    {
+        try{
+            $follower = User::where('id', $follower_id)->first('id');
+
+            if(empty($follower))
+            {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Follower does not Exists',
+                ], 200);
+            }
+
+            $following = User::where('id', $following_id)->first('id');
+
+            if(empty($following))
+            {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Following does not Exists',
+                ], 200);
+            }
+
+            $already = Follow::where('follower_id', $follower_id)
+            ->where('following_id', $following_id)->first();
+
+            if(!empty($already))
+            {
+                $already->delete();
+
+                return response()->json([
+                    'status' => true,
+                    'message' => 'Unfollowed',
+                ], 200);
+            }else{
+                $follow = new Follow;
+                $follow->follower_id = $follower_id;
+                $follow->following_id = $following_id;
+                $follow->save();
+
+                return response()->json([
+                    'status' => true,
+                    'message' => 'Followed',
+                ], 200);
+            }
         }catch(\Exception $e)
         {
             return response()->json([
