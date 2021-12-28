@@ -112,7 +112,7 @@ class BirdController extends Controller
                     array_push($arr, $data);
                 }
             }
-            $bird->inventory_data = $arr;
+            $bird->inventories = $arr;
             return response()->json([
                 'status' => true,
                 'message' => 'Bird Details Found',
