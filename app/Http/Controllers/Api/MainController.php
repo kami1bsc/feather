@@ -13,9 +13,11 @@ use App\Models\Category;
 use App\Models\Banner;
 use App\Models\Favourite;
 use App\Models\Follow;
+use App\Models\DeliveryOption;
 
 class MainController extends Controller
 {
+    //Homescreen
     public function home_screen($user_id)
     {
         try{
@@ -118,6 +120,7 @@ class MainController extends Controller
         }
     }
 
+    //Categories
     public function categories()
     {
         try{
@@ -145,6 +148,7 @@ class MainController extends Controller
         }
     }
 
+    //Set Favourite Bird
     public function set_favourite_bird(Request $request)
     {
         try{
@@ -200,6 +204,7 @@ class MainController extends Controller
         }
     }
 
+    //Bird By Category
     public function birds_by_category($user_id, $category_id)
     {
         try{
@@ -263,6 +268,7 @@ class MainController extends Controller
         }
     }
 
+    //Follow
     public function follow($follower_id, $following_id)
     {
         try{
@@ -314,6 +320,36 @@ class MainController extends Controller
                 'status' => false,
                 'message' => 'There is some trouble to proceed your action',
             ], 200);
+        }
+    }
+
+    //Store Delivery Options
+    public function store_delivery_options($store_id)
+    {
+        try{
+            $store = User::where('id', $store_id)->first('id');
+
+            if(empty($store))
+            {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Store does not Exists',
+                ], 200);
+            }
+
+            $delivery_options = DeliveryOption::where('store_id', $store_id)->get(['id', 'store_id', 'delivery_fee', 'delivery_fee_currency', 'delivery_type', 'estimated_arrival_time']);
+
+            return response()->json([
+                'status' => true,
+                'message' => $delivery_options->count() > 0 ? 'Delivery Options Found' : 'No Delivery Option Found',
+                'data' => $delivery_options->count() > 0 ? $delivery_options : [],
+            ], 200);
+        }catch(\Exception $e)
+        {
+            return response()->json([
+                'status' => false,
+                'message' => 'There is some trouble to proceed your action',
+            ], 200); 
         }
     }
 }

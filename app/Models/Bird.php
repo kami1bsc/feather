@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Bird extends Model
 {
     use HasFactory;
+
+    protected $table = "birds";
+
+    public function category()
+    {
+        return $this->belongsTo('App\Models\Category', 'category_id', 'id');
+    }
 }

@@ -1,0 +1,52 @@
+.center {
+  display: inline;
+  /* margin: 3px;*/
+}
+.fa-plus-circle {
+  font-size: large;
+  font-weight: 900;
+}
+.form-input {
+  width: 100px;
+  padding: 3px;
+  background: #fff;
+  border: 2px dashed rgb(234, 234, 235);
+  padding: 5px;
+}
+.form-input input {
+  display: none;
+}
+.form-input label {
+  display: block;
+  height: auto;
+  max-height: 100px;
+
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.form-input img {
+  width: 80px;
+  height: 60px;
+  margin: 2px;
+}
+
+.imgRemove {
+  position: relative;
+  bottom: 114px;
+  left: 68%;
+  background-color: transparent;
+  border: none;
+  font-size: 30px;
+  outline: none;
+}
+.imgRemove::after {
+  content: " \21BA";
+  color: #fff;
+  font-weight: 900;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.small {
+  color: firebrick;
+}

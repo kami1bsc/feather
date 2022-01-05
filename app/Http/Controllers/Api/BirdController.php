@@ -16,6 +16,7 @@ use App\Models\Follow;
 
 class BirdController extends Controller
 {
+    //Bird details
     public function bird_details($user_id, $bird_id)
     {        
         try{

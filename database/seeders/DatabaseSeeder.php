@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(BirdSeeder::class);
         $this->call(BirdImageSeeder::class);
         $this->call(BannerSeeder::class);
+        $this->call(DeliveryOptionSeeder::class);
     }
 }

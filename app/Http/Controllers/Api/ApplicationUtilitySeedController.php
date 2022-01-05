@@ -15,6 +15,7 @@ use App\Models\Follow;
 
 class ApplicationUtilitySeedController extends Controller
 {
+    //Not for Mobile App, just to insert some dummy data
     public function bird_image_seeder()
     {
         $birds = Bird::all();

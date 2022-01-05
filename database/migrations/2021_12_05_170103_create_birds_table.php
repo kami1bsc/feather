@@ -27,6 +27,7 @@ class CreateBirdsTable extends Migration
             $table->text('description')->nullable();
             $table->integer('quantity')->default(0);
             $table->string('sku')->default("");
+            $table->string('minimum_order_quantity')->default("");
             $table->string('tags')->default("");
             $table->string('breed')->default("");
             $table->string('hybrid')->default("");
@@ -51,11 +52,6 @@ class CreateBirdsTable extends Migration
             $table->string('personality')->default("");
             $table->string('livestock_conservency_status')->default("");
             $table->string('apa_class')->default("");
-            $table->string('delivery_address')->default("");
-            $table->string('delivery_type')->default("home_delivery");
-            $table->string('delivery_days')->default("");
-            $table->string("delivery_charges")->default("");
-            $table->string('delivery_charges_currency')->default("$");
             $table->timestamps();
         });
     }

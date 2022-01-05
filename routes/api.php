@@ -44,6 +44,7 @@ Route::post('add_address', [AddressBookController::class, 'add_address']);
 Route::post('edit_address', [AddressBookController::class, 'edit_address']);
 Route::get('get_addresses/{user_id}', [AddressBookController::class, 'get_addresses']);
 Route::get('delete_address/{address_id}', [AddressBookController::class, 'delete_address']);
+Route::get('store_delivery_options/{store_id}', [MainController::class, 'store_delivery_options']);
 
 //Homescreen Routes
 Route::get('home_screen/{user_id}', [MainController::class, 'home_screen']);

@@ -494,6 +494,7 @@ class AuthController extends Controller
         }
     }
 
+    //Verify Code
     public function verify_code(Request $request)
     {
         try{

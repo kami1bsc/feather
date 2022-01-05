@@ -12,6 +12,7 @@ use App\Models\Follow;
 
 class ProfileController extends Controller
 {
+    //Store Profile
     public function store_profile($user_id, $store_id)
     {
         try{
